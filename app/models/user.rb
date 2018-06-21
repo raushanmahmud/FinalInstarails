@@ -3,7 +3,7 @@ class User < ApplicationRecord
 	has_one_attached :avatar
 	has_many :posts
 	
-	validates_presence_of :email, :username
+	validates_presence_of :email, :username, :avatar
 	validates_uniqueness_of :email, :username
 	validates :password, length: {minimum: 6, maximum: 30}
 	validates_email_format_of :email, message: 'The e-mail format is not correct!'

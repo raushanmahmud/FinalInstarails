@@ -1,15 +1,12 @@
 <% @title = "Homepage"%>
 
 
-<div class="container">
-	<div class="jumbotron">
+<div class="jumbotron">
+	<% if signed_in? %>
+		<h2><%= current_user.username %></h2>
+	<% else %>
 		<h1>Welcome to Intagram!</h1>
-		<% if signed_in? %>
-			<h2><%= current_user.username %></h2>
-		<% else %>
-			<%= link_to "Sign in", login_path %> | 
-			<%= link_to "Register", signup_path %>
-			
-		<% end %>
-	</div>
+		<%= link_to "Sign in", login_path, class: "btn btn-primary" %> 
+		<%= link_to "Register", signup_path, class: "btn btn-outline-info" %>
+	<% end %>
 </div>

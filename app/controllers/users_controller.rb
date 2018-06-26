@@ -22,13 +22,27 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def edit
+	def update #todo
+		@user = User.find(params[:id])
+		if (@user.update(user_params))
+			redirect_to @user
+		else
+			render :edit
+		end
+
 	end
 
-	def update
+	def destroy #todo
+
+		@user = User.find(params[:id])
+		if @user==current_user 
+			@user.destroy
+		end
+		redirect_to users_path
 	end
 
-	def destroy
+	def edit #todo
+		@user = User.find(params[:id])
 	end
 
 	private
